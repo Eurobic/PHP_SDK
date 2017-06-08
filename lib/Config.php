@@ -11,8 +11,8 @@ class Config {
     static $TestUrls = array(
         "SessionTokenRequestUrl" => "https://api-turnkeyuat.test.myriadpayments.com/token",
         "PaymentOperationActionUrl" => "https://api-turnkeyuat.test.myriadpayments.com/payments",
-        "JavaScriptUrl" => "https://cashierui-turnkeyuat.test.myriadpayments.com/js/api.js",
-        "BaseUrl" => "https://cashierui-turnkeyuat.test.myriadpayments.com/ui/cashier",
+        "JavaScriptUrl" => "https://cashier-turnkeyuat.test.myriadpayments.com/js/api.js",
+        "BaseUrl" => "https://cashier-turnkeyuat.test.myriadpayments.com/ui/cashier",
     );
     static $ProductionUrls = array(
         "SessionTokenRequestUrl" => "https://api-turnkey.myriadpayments.com/token",
