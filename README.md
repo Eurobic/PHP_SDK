@@ -1,4 +1,4 @@
-# Global-Turnkey-PHP-SDK
+# Turnkey-PHP-SDK
 This  library provides integration access to the Turnkey Global Api.
 
 ##Quick Start
