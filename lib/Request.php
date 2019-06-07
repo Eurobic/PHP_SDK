@@ -11,9 +11,15 @@ class Request extends Executable {
         "merchantId" => "merchantId",
     );
 
+    private function millis_float() {
+        // note about microtime(): "This function is only available on operating systems that support the gettimeofday() system call."
+        list($usec, $sec) = explode(" ", microtime());
+        return round(((float)$usec + (float)$sec) * 1000);
+    }
+
     public function __construct() {
         parent::__construct();
-        $this->_data["timestamp"] = time();
+        $this->_data["timestamp"] = $this->millis_float(); 
         call_user_func_array(array($this, "_set"), func_get_args());
     }
 
