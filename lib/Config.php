@@ -17,8 +17,8 @@ class Config {
     static $ProductionUrls = array(
         "SessionTokenRequestUrl" => "https://api-turnkey.myriadpayments.com/token",
         "PaymentOperationActionUrl" => "https://api-turnkey.myriadpayments.com/payments",
-        "JavaScriptUrl" => "https://api-turnkey.myriadpayments.com/js/api.js",
-        "BaseUrl" => "https://api-turnkey.myriadpayments.com/ui/cashier",
+        "JavaScriptUrl" => "https://cashier-turnkey.myriadpayments.com/js/api.js",
+        "BaseUrl" => "https://cashier-turnkey.myriadpayments.com/ui/cashier",
     );
     static $Protocol = "https";
     static $Method = "POST";
