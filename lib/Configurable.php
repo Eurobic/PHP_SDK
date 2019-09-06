@@ -14,6 +14,8 @@ class Configurable implements \ArrayAccess, \Iterator, \Serializable {
     const ACTION_PURCHASE = "PURCHASE";
     const ACTION_REFUND = "REFUND";
     const ACTION_STATUS_CHECK = "STATUS_CHECK";
+    const ACTION_AVAILABLE_PAYMENT_SOLUTION = "GET_AVAILABLE_PAYSOLS";
+    const ACTION_VERIFY = "VERIFY";
     const CHANNEL_ECOM = "ECOM";
     const CHANNEL_MOTO = "MOTO";
     const USER_DEVICE_MOBILE = "MOBILE";
@@ -44,6 +46,8 @@ class Configurable implements \ArrayAccess, \Iterator, \Serializable {
                 case "statuscheck":
                 case "status_check":
                 case "void":
+                case "get_available_paysols":
+                case "verify":
                 case "tokenize":
                     return call_user_func_array(array($this->_request, $name), $this->_data);
                     break;

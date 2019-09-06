@@ -11,7 +11,12 @@
     ],
     "minimum-stability": "stable",
     "support": {},
-    "authors": [{}],
+    "authors": [
+	    {
+            "name": "peter",
+            "email": "peter.shang@nodus.com"
+        }
+	],
     "require": {
         "php": ">=5.6.0",
         "ext-curl": "*",

@@ -7,8 +7,8 @@
 
 try {
         $payments = (new Payments())->testEnvironment(array(
-            "merchantId" => "5000",
-            "password" => "5678",
+            "merchantId" => $merchantId,
+            "password" => $password,
         ));
         $tokenize = $payments->tokenize();
         $tokenize->allowOriginUrl("http://google.com/")->
@@ -23,10 +23,10 @@ try {
                 merchantNotificationUrl("http://google.com/")->
                 channel(Payments::CHANNEL_ECOM)->
                 userDevice(Payments::USER_DEVICE_DESKTOP)->
-                amount("20.00")->
-                country("GB")->
-                currency("EUR")->
-                paymentSolutionId("500")->
+                amount($amount)->
+                country($country)->
+                currency($currency)->
+                paymentSolutionId($paymentSolutionId)->
                 customerId($token->customerId)->
                 specinCreditCardToken($token->cardToken)->
                 specinCreditCardCVV($credit_card_cvv);

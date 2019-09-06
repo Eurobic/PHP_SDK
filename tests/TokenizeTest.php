@@ -1,22 +1,42 @@
 <?php
-use PHPUnit\Framework\TestCase;
 
-class TokenizedTest extends TestCase
+require_once __DIR__ . '/IpgBaseTest.php';
+
+
+class TokenizedTest  extends IpgBaseTest
 {
     public function testTokenize()
     {
-        $payments = (new Payments())->testEnvironment(array(
-            "merchantId" => "5000",
-            "password" => "5678",
-        ));
-        $tokenize = $payments->tokenize();
-        $tokenize->allowOriginUrl("http://google.com/")->
-                number("5454545454545454")->
+
+        $tokenize = $this->payments->tokenize();
+        $tokenize->allowOriginUrl(parent::$FAKE_HOST)->
+                number(parent::$CARD_NUMBER)->
                 nameOnCard("John Doe")->
                 expiryMonth("12")->
-                expiryYear("2018");
+                expiryYear(parent::$YEAR);
         $result = $tokenize->execute();
+        
+        parent::logResult($result);
+        
         $this->assertEquals("Payments\ResponseSuccess", get_class($result));
     }
+
+
+    public function testTokenizeFailure()
+    {
+
+        $tokenize = $this->payments->tokenize();
+        $tokenize->allowOriginUrl(parent::$FAKE_HOST)->
+                number(parent::$CARD_NUMBER)->
+                nameOnCard("John Doe")->
+                expiryMonth("12")->
+                expiryYear("1028");
+        $result = $tokenize->execute();
+       
+        parent::logResult($result);
+        
+        $this->assertEquals("Payments\ResponseError", get_class($result));
+    }
+    
 }
 ?>

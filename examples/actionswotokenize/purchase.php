@@ -7,18 +7,18 @@
 
 try {
         $payments = (new Payments())->testEnvironment(array(
-            "merchantId" => "5000",
-            "password" => "5678",
+            "merchantId" => $merchantId,
+            "password" => $password,
         ));
         $purchase = $payments->purchase();
         $purchase->allowOriginUrl("http://google.com/")->
                 merchantNotificationUrl("http://google.com/")->
                 channel(Payments::CHANNEL_ECOM)->
                 userDevice(Payments::USER_DEVICE_DESKTOP)->
-                amount("20.00")->
-                country("GB")->
-                currency("EUR")->
-                paymentSolutionId("500")->
+                amount($amount)->
+                country($country)->
+                currency($currency)->
+                paymentSolutionId($paymentSolutionId)->
                 customerId($customer_it_token)->
                 specinCreditCardToken($credit_card_token)->
                 specinCreditCardCVV($credit_card_cvv);

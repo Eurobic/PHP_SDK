@@ -26,7 +26,7 @@ try {
                 amount($amount)->
                 country($country)->
                 currency($currency)->
-                paymentSolutionId($paymentSolutionId);
+                paymentSolutionId("");
         $token = $purchase->token();
         ?>
     </pre>
@@ -51,14 +51,13 @@ try {
             </style>
         </head>  
         <body>  
-            <h3>Redirection example</h3>  
-            <h4>redirectedFullWindow</h4>  
+            <h3>Hosted Payment Page example</h3>  
             <form method="get" action="<?= $purchase->BaseUrl() ?>">
                 <label>token:</label><input name="token" value="<?= $token->token ?>"/><br/>  
                 <label>merchantId:</label><input name="merchantId" value="<?= $token->merchantId ?>"/><br/>  
-                <label>paymentSolutionId:</label><input name="paymentSolutionId" value="500"/><br/>
+                <label>paymentSolutionId:</label><input name="paymentSolutionId" value="<?= $token->paymentSolutionId ?>"/><br/>
 
-                <input type="hidden" name="integrationMode" value="standalone"/>  
+                <input type="hidden" name="integrationMode" value="hostedPayPage"/>  
 
 
                 <button type="submit" >Pay </button>  

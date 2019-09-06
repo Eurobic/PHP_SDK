@@ -23,6 +23,8 @@ include_once('lib/Request/StatusCheck.php');
 include_once('lib/Request/Token.php');
 include_once('lib/Request/Tokenize.php');
 include_once('lib/Request/Void.php');
+include_once('lib/Request/AvailablePaymentSolution.php');
+include_once('lib/Request/Verify.php');
 
 include_once('lib/Request/Action/Auth.php');
 include_once('lib/Request/Action/Refund.php');
@@ -31,6 +33,8 @@ include_once('lib/Request/Action/Purchase.php');
 include_once('lib/Request/Action/StatusCheck.php');
 include_once('lib/Request/Action/Tokenize.php');
 include_once('lib/Request/Action/Void.php');
+include_once('lib/Request/Action/AvailablePaymentSolution.php');
+include_once('lib/Request/Action/Verify.php');
 
 include_once('lib/Request/Token/Auth.php');
 include_once('lib/Request/Token/Refund.php');
@@ -39,6 +43,8 @@ include_once('lib/Request/Token/Purchase.php');
 include_once('lib/Request/Token/StatusCheck.php');
 include_once('lib/Request/Token/Tokenize.php');
 include_once('lib/Request/Token/Void.php');
+include_once('lib/Request/Token/AvailablePaymentSolution.php');
+include_once('lib/Request/Token/Verify.php');
 
 include_once('lib/Response/Error/Errors.php');
 include_once('lib/Response/Error.php');

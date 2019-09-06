@@ -1,23 +1,25 @@
 <pre>
     <?php
     include '../../payments.php';
+	include '../example_data.php';
 
     use Payments\Payments;
 
 try {
         $payments = (new Payments())->testEnvironment(array(
-            "merchantId" => "5000",
-            "password" => "5678",
+            "merchantId" => $merchantId,
+            "password" => $password,
         ));
+		
         $purchase = $payments->purchase();
-        $purchase->allowOriginUrl("http://google.com/")->
+        $purchase->allowOriginUrl(getSiteDomain())->
                 merchantNotificationUrl("http://google.com/")->
                 channel(Payments::CHANNEL_ECOM)->
                 userDevice(Payments::USER_DEVICE_DESKTOP)->
-                amount("20.00")->
-                country("GB")->
-                currency("EUR")->
-                paymentSolutionId("500");
+                amount($amount)->
+                country($country)->
+                currency($currency)->
+                paymentSolutionId($paymentSolutionId);
         $token = $purchase->token();
         ?>
     </pre>
@@ -47,8 +49,9 @@ try {
                 cashier.init(
                         {baseUrl: '<?= $purchase->BaseUrl() ?>'}
                 );
-                function handleResult(data) {
+                function handleResult(data,res) {
                     alert(JSON.stringify(data));
+					 //alert(JSON.stringify(res));
                 }
                 function pay() {
                     var token = document.getElementById("tokenIn").value;

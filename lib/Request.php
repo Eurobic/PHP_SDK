@@ -47,6 +47,12 @@ class Request extends Executable {
             case "void":
                 return new RequestVoid($value);
                 break;
+            case "availablepaymentsolution":
+                return new RequestAvailablePaymentSolution();
+                break;
+            case "verify":
+                return new RequestVerify($value);
+                break;
         }
         return parent::__call($name, $value);
     }
@@ -117,13 +123,14 @@ class Request extends Executable {
         curl_setopt($ch, CURLOPT_ENCODING, 'gzip');
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
         curl_setopt($ch, CURLOPT_HEADER, false);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 60);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 120);
 
+       
         $response = curl_exec($ch);
         $info = curl_getinfo($ch);
 
@@ -135,10 +142,20 @@ class Request extends Executable {
         if ((!is_null($callback)) && (is_callable($callback))) {
             call_user_func($callback, $response);
         } else {
-            if (!isset($response["result"]) or $response["result"] != "success") {
+            $rawResult = $response["result"];
+            if(!isset($rawResult)) {
+                throw new PaymentsExceptionExecuteNetworkError('No [result] field in the response, please check.', curl_errno($ch));
+            }
+            
+            if ($rawResult === "success" || $rawResult === "redirection") {
+                return new ResponseSuccess($response, $data, $info);
+            } 
+            
+            if($rawResult === "failure") {
                 return new ResponseError($response, $data, $info);
             }
-            return new ResponseSuccess($response, $info);
+            
+            return null;
         }
     }
 

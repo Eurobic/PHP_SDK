@@ -9,16 +9,16 @@ class Config {
     static $BaseUrl;
     static $JavaScriptUrl;
     static $TestUrls = array(
-        "SessionTokenRequestUrl" => "https://api-turnkeyuat.test.myriadpayments.com/token",
-        "PaymentOperationActionUrl" => "https://api-turnkeyuat.test.myriadpayments.com/payments",
-        "JavaScriptUrl" => "https://cashier-turnkeyuat.test.myriadpayments.com/js/api.js",
-        "BaseUrl" => "https://cashier-turnkeyuat.test.myriadpayments.com/ui/cashier",
+        "SessionTokenRequestUrl" => "https://apiuat.test.intelligent-payments.com/token",
+        "PaymentOperationActionUrl" => "https://apiuat.test.intelligent-payments.com/payments",
+        "JavaScriptUrl" => "https://cashierui-apiuat.test.intelligent-payments.com/js/api.js",
+        "BaseUrl" => "https://cashierui-apiuat.test.intelligent-payments.com/ui/cashier",
     );
     static $ProductionUrls = array(
-        "SessionTokenRequestUrl" => "https://api-turnkey.myriadpayments.com/token",
-        "PaymentOperationActionUrl" => "https://api-turnkey.myriadpayments.com/payments",
-        "JavaScriptUrl" => "https://cashier-turnkey.myriadpayments.com/js/api.js",
-        "BaseUrl" => "https://cashier-turnkey.myriadpayments.com/ui/cashier",
+        "SessionTokenRequestUrl" => "https://api.intelligent-payments.com/token",
+        "PaymentOperationActionUrl" => "https://api.intelligent-payments.com/payments",
+        "JavaScriptUrl" => "https://cashierui-api.intelligent-payments.com/js/api.js",
+        "BaseUrl" => "https://cashierui-api.intelligent-payments.com/ui/cashier",
     );
     static $Protocol = "https";
     static $Method = "POST";
