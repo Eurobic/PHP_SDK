@@ -14,8 +14,8 @@ jobs:
         SOURCE_REPO: "git@github.com:intelligentpayments/PHP_SDK_Master.git"
         SOURCE_BRANCH: "master"
         DESTINATION_REPO: "git@github.com:intelligentpayments/PHP_SDK_UP.git"
-        DESTINATION_BRANCH: ""
+        DESTINATION_BRANCH: "copyover"
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       with:
         args: $SOURCE_REPO $SOURCE_BRANCH $DESTINATION_REPO $DESTINATION_BRANCH
-  
+
