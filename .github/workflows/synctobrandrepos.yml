@@ -31,3 +31,68 @@ jobs:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       with:
         args: $SOURCE_REPO $SOURCE_BRANCH $DESTINATION_REPO $DESTINATION_BRANCH
+  repo-sync-eservice:
+    runs-on: ubuntu-latest
+    steps:
+    - name: repo-sync
+      uses: wei/git-sync@v1
+      env:
+        SOURCE_REPO: "git@github.com:intelligentpayments/PHP_SDK_Master.git"
+        SOURCE_BRANCH: "master"
+        DESTINATION_REPO: "git@github.com:intelligentpayments/PHP_SDK_ESERVICE.git"
+        DESTINATION_BRANCH: "copyover"
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      with:
+        args: $SOURCE_REPO $SOURCE_BRANCH $DESTINATION_REPO $DESTINATION_BRANCH
+  repo-sync-evode:
+    runs-on: ubuntu-latest
+    steps:
+    - name: repo-sync
+      uses: wei/git-sync@v1
+      env:
+        SOURCE_REPO: "git@github.com:intelligentpayments/PHP_SDK_Master.git"
+        SOURCE_BRANCH: "master"
+        DESTINATION_REPO: "git@github.com:intelligentpayments/PHP_SDK_EVODE.git"
+        DESTINATION_BRANCH: "copyover"
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      with:
+        args: $SOURCE_REPO $SOURCE_BRANCH $DESTINATION_REPO $DESTINATION_BRANCH
+  repo-sync-evomx:
+    runs-on: ubuntu-latest
+    steps:
+    - name: repo-sync
+      uses: wei/git-sync@v1
+      env:
+        SOURCE_REPO: "git@github.com:intelligentpayments/PHP_SDK_Master.git"
+        SOURCE_BRANCH: "master"
+        DESTINATION_REPO: "git@github.com:intelligentpayments/PHP_SDK_EVOMX.git"
+        DESTINATION_BRANCH: "copyover"
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      with:
+        args: $SOURCE_REPO $SOURCE_BRANCH $DESTINATION_REPO $DESTINATION_BRANCH
+  repo-sync-evosnapgateway:
+    runs-on: ubuntu-latest
+    steps:
+    - name: repo-sync
+      uses: wei/git-sync@v1
+      env:
+        SOURCE_REPO: "git@github.com:intelligentpayments/PHP_SDK_Master.git"
+        SOURCE_BRANCH: "master"
+        DESTINATION_REPO: "git@github.com:intelligentpayments/PHP_SDK_SNAPGATEWAY.git"
+        DESTINATION_BRANCH: "copyover"
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      with:
+        args: $SOURCE_REPO $SOURCE_BRANCH $DESTINATION_REPO $DESTINATION_BRANCH
+  repo-sync-moneta:
+    runs-on: ubuntu-latest
+    steps:
+    - name: repo-sync
+      uses: wei/git-sync@v1
+      env:
+        SOURCE_REPO: "git@github.com:intelligentpayments/PHP_SDK_Master.git"
+        SOURCE_BRANCH: "master"
+        DESTINATION_REPO: "git@github.com:intelligentpayments/PHP_SDK_MONETA.git"
+        DESTINATION_BRANCH: "copyover"
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      with:
+        args: $SOURCE_REPO $SOURCE_BRANCH $DESTINATION_REPO $DESTINATION_BRANCH
