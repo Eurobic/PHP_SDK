@@ -4,7 +4,7 @@ name: submitbrandtomr
 on:
   push:
     branches:
-      - create-pull-request/patch
+      - 'create-pull-request/patch'
 
 jobs:
   synctomaster:
