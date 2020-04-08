@@ -27,9 +27,7 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git commit -m "Remove copyover yml file" -a
-        git pull
-        git checkout changes        
+        git commit -m "Remove copyover yml file" -a       
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
