@@ -30,15 +30,29 @@ jobs:
           replace: "UniversalPay Gateway"
       - name: add to github
         run: |
-          git config --local user.email "jurgencalleja@github.com"
-          git config --local user.name "Jurgen Calleja"
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           git add .
           git commit -m "testing testing 123"
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.SSH_PRIVATE_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: copyover
           persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
           fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
-  
+  copytomaster:
+    needs: branding_test
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout copyover to master
+        run: |
+          git pull
+          git push origin copyover:master
+      - name: Push changes
+          uses: ad-m/github-push-action@master
+          with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            branch: master
+            persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+            fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
