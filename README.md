@@ -3,17 +3,17 @@ This  library provides integration access to the EVO Gateway Global Api.
 
 ##Quick Start
 
-Payments PHP SDK is a small library of PHP code that you can use to quickly integrate with the Payments system and submit transactions, check their status and more.
+Evo Gateway PHP SDK is a small library of PHP code that you can use to quickly integrate with the Evo Gateway system and submit transactions, check their status and more.
 
 This section will give you a very quick introduction as to how you can use it and later in this document you will find more details.
 
 ##Before you Begin
 
-Before using the Payments PHP SDK you should be familiar with the contents of the [API Specification for Merchants](docs/API-Specification.pdf) document as it describes all fields and their meaning within a given payment transaction.
+Before using the Evo Gateway PHP SDK you should be familiar with the contents of the [API Specification for Merchants](docs/API-Specification.pdf) document as it describes all fields and their meaning within a given payment transaction.
 
 ##Setup your Project
 
-Payments PHP SDK is delivered as a composer(*) package, or dependency, that you should add to your PHP project in order to use it.
+Evo Gateway PHP SDK is delivered as a composer(*) package, or dependency, that you should add to your PHP project in order to use it.
 
 Once done - all its code will be available to you under the Payments PHP namespace.
 
@@ -21,7 +21,7 @@ Once done - all its code will be available to you under the Payments PHP namespa
 
 ##Choose an Operation Mode
 
-Payments SDK lets you choose between two ways of using it:
+Evo Gateway SDK lets you choose between two ways of using it:
 
 * __Server-to-Server mode__ - where your PHP code performs all necessary preparations and operations on behalf of the user, but without his or her direct involvement, or
  
@@ -31,7 +31,7 @@ Choose the one that is most appropriate for your project.
 
 ##Configure
 
-Payments SDK needs to ‘know’ a few things before it can perform any operation - for example - your authentication credentials; which is your merchant number; if you’re only testing your app and you don’t actually want to pay with a real card or if it is running in a production environment, etc.
+Evo Gateway SDK needs to ‘know’ a few things before it can perform any operation - for example - your authentication credentials; which is your merchant number; if you’re only testing your app and you don’t actually want to pay with a real card or if it is running in a production environment, etc.
 
 You need to configure it properly before use. All configuration is done through the Payments/Payments class. The simplest way of using it is to create a new instance of it, choose its operation environment (test or production) and then give it all other details either at once - as an associative array (or any other Iterator object) or one by one. For example:
 
@@ -121,7 +121,7 @@ More on result data in the [API Specification for Merchants](docs/API-Specificat
 
 You can find various examples, in PHP code, under the _examples/_ folder of the SDK. 
 
-## Payments PHP SDK Reference
+## Evo Gateway PHP SDK Reference
 
 In this section you can find more details about the SDK.
 
@@ -272,13 +272,13 @@ III. Then issue and either assign the method call result to a variable or provid
 ```
 IV. Watch for Exceptions
 
-Occasionally the SDK will not be able to perform your request and it will throw an _Exception_. This could be due to misconfiguration or unexpected conditions like no connectivity to the API. Such Exceptions always inherit _Payments/Exception_ so you can distinguish between Payments SDK and other errors of your application code. 
+Occasionally the SDK will not be able to perform your request and it will throw an _Exception_. This could be due to misconfiguration or unexpected conditions like no connectivity to the API. Such Exceptions always inherit _Payments/Exception_ so you can distinguish between Evo Gateway SDK and other errors of your application code. 
 
 Exceptions are described in more detail in a later section of this document.
 
 V. Handle the API Response
 
-No matter how you issued your request you will be given an instance of the _Payments/Response_ class that holds parameters returned by the Payments API. Furthermore, depending on the success of the operation it might also be an instance of _Payments/Success_, if it was successful, _Payments/Error_ if the API returned an error or _Payments/Info_. You can use the instanceof operator to quickly find out if there was a failure.
+No matter how you issued your request you will be given an instance of the _Payments/Response_ class that holds parameters returned by the Evo Gateway API. Furthermore, depending on the success of the operation it might also be an instance of _Payments/Success_, if it was successful, _Payments/Error_ if the API returned an error or _Payments/Info_. You can use the instanceof operator to quickly find out if there was a failure.
 
 Response Objects also inherit the _Payments/Configurable_ class so you can obtain parameters returned by the API in the same way as Request Objects (See above for how this is done). Obviously, as these objects exist only to provide your application with the operation’s results - setting any parameter values on them has no effect.
 
@@ -308,11 +308,11 @@ All these classes inherit from a base Payments/Exception class so that you can e
 
 This section contains a few suggestions and ideas you might find helpful in saving work or keeping your application code cleaner.
 
-You shouldn’t treat them as the proper way of using the Payments PHP SDK as they’re nothing more than suggestions.
+You shouldn’t treat them as the proper way of using the Evo Gateway PHP SDK as they’re nothing more than suggestions.
 
 ## General vs Individual Configuration Parameters
 
-Payments PHP SDK and its _Configurable_ objects are quite flexible in allowing the setting of parameters. There are hardly any limits on where you can set a given parameter. For this reason, use the _Payments_ object to set those parameters that will be shared among subsequent requests - like merchant ids, passwords or just about anything else.
+Evo Gateway PHP SDK and its _Configurable_ objects are quite flexible in allowing the setting of parameters. There are hardly any limits on where you can set a given parameter. For this reason, use the _Payments_ object to set those parameters that will be shared among subsequent requests - like merchant ids, passwords or just about anything else.
 
 It might keep your code shorter and simpler.
 
@@ -320,7 +320,7 @@ It might keep your code shorter and simpler.
 
 It’s often the case that your application might already be using other classes and objects - database result objects like _mysqli_result_ or perhaps business-logic objects like Orders, Products, Merchants, etc.
 
-If these implement any of the iterator-like PHP interfaces, like it is the case of mysqli_result then you can use them to directly configure Payments PHP SDK, as it will accept them in a bulk set operation.
+If these implement any of the iterator-like PHP interfaces, like it is the case of mysqli_result then you can use them to directly configure Evo Gateway PHP SDK, as it will accept them in a bulk set operation.
 
 In a similar way - when you _execute()_ a request you pass in a callback where the result will be handled and this callback might just as well be a method within a Payment-like object you already developed. This way your business logic won’t be spread among various source files.
 
