@@ -2,8 +2,9 @@
 name: push to prod
 on:
   pull_request:
-    - opened
-    - edited
+    types:
+      - opened
+      - edited
 jobs:
   synctomaster:
     runs-on: ubuntu-latest
