@@ -1,0 +1,17 @@
+# File: .github/workflows/pushtoprod.yml
+name: push to prod
+on:
+  pull_request:
+    branches:
+      - create-pull-request/patch
+
+jobs:
+  synctomaster:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Merge Pull Request
+        uses: juliangruber/merge-pull-request-action@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          number: 1
+          method: squash
