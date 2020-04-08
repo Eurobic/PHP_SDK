@@ -33,5 +33,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Brand Repo"
+          branch: production
+          labels: auto
           body: |
             A new version has been detected and branded version generated.

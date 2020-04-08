@@ -1,17 +1,18 @@
 # File: .github/workflows/pushtoprod.yml
-name: push to prod
+name: pushtoprod
 on:
   pull_request:
     types:
-      - opened
-      - edited
+      - labeled
 jobs:
-  synctomaster:
+  merge-branch:
     runs-on: ubuntu-latest
     steps:
-      - name: Merge Pull Request
-        uses: juliangruber/merge-pull-request-action@v1
+      - uses: actions/checkout@master
+      - name: Merge by labeled
+        uses: devmasx/merge-branch@v1.1.0
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          number: 1
-          method: squash
+          label_name: 'auto'
+          target_branch: 'production'
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
