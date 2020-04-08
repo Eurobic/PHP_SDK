@@ -45,6 +45,11 @@ jobs:
     needs: branding_test
     runs-on: ubuntu-latest
     steps:
+      - name: get github repo
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ github.repository }}
+          ref: "copyover"
       - name: checkout copyover to master
         run: |
           git pull
