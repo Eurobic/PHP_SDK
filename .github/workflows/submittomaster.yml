@@ -1,0 +1,20 @@
+# File: .github/workflows/submittomaster.yml
+name: submitbrandtomr
+
+on:
+  push:
+    branches:
+      - create-pull-request/patch
+
+jobs:
+  synctomaster:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: repo-sync
+      uses: repo-sync/github-sync@v2
+      with:
+        source_repo: ${{ github.repository }}
+        source_branch: "create-pull-request/patch"
+        destination_branch: "master"
+        github_token: ${{ secrets.GITHUB_TOKEN }}
