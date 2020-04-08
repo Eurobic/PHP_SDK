@@ -12,6 +12,6 @@ jobs:
       - name: Merge by labeled
         uses: devmasx/merge-branch@v1.1.0
         with:
-          label_name: 'auto'
+          label_name: 'autopr'
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

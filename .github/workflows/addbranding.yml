@@ -33,8 +33,9 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Brand Repo"
-          branch: production
-          labels: auto
+          base: master
+          labels: autopr
           body: |
             A new version has been detected and branded version generated.
+        env:
           GITHUB_TOKEN: ${{ secrets.SSH_PRIVATE_KEY }}
