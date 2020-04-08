@@ -37,21 +37,8 @@ jobs:
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.SSH_PRIVATE_KEY }}
           branch: copyover
           persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
           fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
-  copytomaster:
-    needs: branding_test
-    runs-on: ubuntu-latest
-    steps:
-    - name: repo-sync
-      uses: wei/git-sync@v1
-      env:
-        SOURCE_REPO: ${{ github.repository }}
-        SOURCE_BRANCH: "copyover"
-        DESTINATION_REPO: ${{ github.repository }}
-        DESTINATION_BRANCH: "master"
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-      with:
-        args: $SOURCE_REPO $SOURCE_BRANCH $DESTINATION_REPO $DESTINATION_BRANCH
+  
