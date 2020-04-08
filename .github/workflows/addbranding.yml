@@ -4,7 +4,7 @@ name: brandrepo
 on:
   push:
     branches:
-      - changes
+      - copyover
 
 jobs:
   branding_test:
@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v2
         with: 
           repository: ${{ github.repository }}
-          ref: 'changes'      
+          ref: 'copyover'      
       - name: Find and Replace EVO WITH UP
         uses: jacobtomlinson/gha-find-replace@0.1.1
         with:

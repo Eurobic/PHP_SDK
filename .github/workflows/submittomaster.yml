@@ -16,5 +16,5 @@ jobs:
       with:
         source_repo: ${{ github.repository }}
         source_branch: "create-pull-request/patch"
-        destination_branch: "master"
+        destination_branch: "production"
         github_token: ${{ secrets.GITHUB_TOKEN }}
