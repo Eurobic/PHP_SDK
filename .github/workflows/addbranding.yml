@@ -39,18 +39,15 @@ jobs:
             A new version has been detected and branded version generated.
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  AutoMerge:
+  merge-branch:
+    needs: branding_test
     runs-on: ubuntu-latest
     steps:
-      - name: automerge
-        uses: buildsville/simple-merge@v1
-        id: merge
+      - uses: actions/checkout@master
+      - name: Merge by labeled
+        uses: devmasx/merge-branch@v1.1.0
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          method: 'squash'
-          labels: '[ "autopr" ]'
-          title: 'Branded new code'
-          message: 'This is new code'
-      - name: result
-        run: |
-          echo "result: ${{ steps.merge.outputs.result }}"
+          label_name: 'autopr'
+          target_branch: 'master'
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
