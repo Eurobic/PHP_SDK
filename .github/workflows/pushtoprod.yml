@@ -2,9 +2,8 @@
 name: push to prod
 on:
   pull_request:
-    branches:
-      - create-pull-request/patch
-
+    - opened
+    - edited
 jobs:
   synctomaster:
     runs-on: ubuntu-latest
