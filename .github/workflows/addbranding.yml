@@ -37,3 +37,4 @@ jobs:
           labels: auto
           body: |
             A new version has been detected and branded version generated.
+          GITHUB_TOKEN: ${{ secrets.SSH_PRIVATE_KEY }}
