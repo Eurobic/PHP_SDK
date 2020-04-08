@@ -38,3 +38,13 @@ jobs:
             A new version has been detected and branded version generated.
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  merge-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Merge by labeled
+        uses: devmasx/merge-branch@v1.1.0
+        with:
+          label_name: 'autopr'
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
