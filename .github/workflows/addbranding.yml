@@ -28,26 +28,15 @@ jobs:
           include: "README.md"
           find: "Evo Gateway"
           replace: "UniversalPay Gateway"
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v2
+      -name : add to github
+        run: |
+          git add .
+          git commit -m "testing testing 123"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "Brand Repo"
-          labels: autopr
-          base: master
-          body: |
-            A new version has been detected and branded version generated.
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  merge-branch:
-    needs: branding_test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-      - name: Merge by labeled
-        uses: devmasx/merge-branch@v1.1.0
-        with:
-          label_name: 'autopr'
-          target_branch: 'master'
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: copyover
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+          fetch-depth: 0 # otherwise, you will failed to push refs to dest repo  
+          
