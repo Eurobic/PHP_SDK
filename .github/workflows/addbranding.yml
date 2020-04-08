@@ -34,17 +34,23 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Brand Repo"
           labels: autopr
+          base: master
           body: |
             A new version has been detected and branded version generated.
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  merge-branch:
+  AutoMerge:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - name: Merge by labeled
-        uses: devmasx/merge-branch@v1.1.0
+      - name: automerge
+        uses: buildsville/simple-merge@v1
+        id: merge
         with:
-          label_name: 'autopr'
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          method: 'squash'
+          labels: '[ "autopr" ]'
+          title: 'Branded new code'
+          message: 'This is new code'
+      - name: result
+        run: |
+          echo "result: ${{ steps.merge.outputs.result }}"
