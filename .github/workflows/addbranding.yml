@@ -41,4 +41,16 @@ jobs:
           branch: copyover
           persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
           fetch-depth: 0 # otherwise, you will failed to push refs to dest repo  
-          
+  copytomaster:
+    name: copy over to master
+    needs: branding_test
+    runs-on: ubuntu-latest
+    steps:
+      - continue-on-error: false
+      - name: repo-sync
+        uses: repo-sync/github-sync@v2
+        with:
+          source_repo: ${{ github.repository }}
+          source_branch: "copyover"
+          destination_branch: "master"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
