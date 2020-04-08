@@ -21,6 +21,7 @@ jobs:
       run: |
           git pull 
           git checkout changes
+          git add .
           rm -f .github/workflows/synctobrandrepos.yml
     - name: Commit files
       run: |
