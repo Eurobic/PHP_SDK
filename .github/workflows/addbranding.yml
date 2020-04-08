@@ -16,6 +16,9 @@ jobs:
         with:
           repository: ${{ github.repository }}
           ref: "copyover"
+      - name: checkout to master
+        run: |
+          git checkout master
       - name: Find and Replace EVO WITH UP
         uses: jacobtomlinson/gha-find-replace@0.1.1
         with:
@@ -34,30 +37,6 @@ jobs:
           git config --local user.name "GitHub Action"
           git add .
           git commit -m "testing testing 123"
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: copyover
-          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
-          fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
-  copytomaster:
-    needs: branding_test
-    runs-on: ubuntu-latest
-    steps:
-      - name: get github repo
-        uses: actions/checkout@v2
-        with:
-          repository: ${{ github.repository }}
-          ref: "copyover"
-      - name: checkout copyover to master
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git checkout master
-          git pull               # to update the state to the latest remote master state
-          git merge copyover     # to bring changes to local master from your develop branch
-          git push origin master # push current HEAD to remote master branch          
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
