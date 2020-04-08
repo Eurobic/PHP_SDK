@@ -44,9 +44,8 @@ jobs:
   copytomaster:
     name: copy over to master
     needs: branding_test
-    uses: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
-      - continue-on-error: false
       - name: repo-sync
         uses: repo-sync/github-sync@v2
         with:
