@@ -28,7 +28,7 @@ jobs:
           include: "README.md"
           find: "Evo Gateway"
           replace: "UniversalPay Gateway"
-      -name : add to github
+      - name : add to github
         run: |
           git add .
           git commit -m "testing testing 123"
