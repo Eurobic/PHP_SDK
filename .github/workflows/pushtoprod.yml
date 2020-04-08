@@ -1,9 +1,9 @@
 # File: .github/workflows/pushtoprod.yml
 name: pushtoprod
 on:
-  pull_request:
-    types:
-      - labeled
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '*/1 * * * *'
 jobs:
   merge-branch:
     runs-on: ubuntu-latest
