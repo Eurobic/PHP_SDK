@@ -27,12 +27,11 @@ jobs:
         with:
           include: "README.md"
           find: "Evo Gateway"
-          replace: "UniversalPay Gateway"    
-      - name: Push changes
-        uses: ad-m/github-push-action@master
+          replace: "UniversalPay Gateway"
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v2
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: production
-          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
-          fetch-depth: 0 # otherwise, you will failed to push refs to dest repo  
-      
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Brand Repo"
+          body: |
+            A new version has been detected and branded version generated.
