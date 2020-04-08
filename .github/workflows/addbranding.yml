@@ -13,9 +13,9 @@ jobs:
     steps:
       - name: get github repo
         uses: actions/checkout@v2
-        with: 
+        with:
           repository: ${{ github.repository }}
-          ref: 'copyover'      
+          ref: "copyover"
       - name: Find and Replace EVO WITH UP
         uses: jacobtomlinson/gha-find-replace@0.1.1
         with:
@@ -28,7 +28,7 @@ jobs:
           include: "README.md"
           find: "Evo Gateway"
           replace: "UniversalPay Gateway"
-      - name : add to github
+      - name: add to github
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
@@ -40,16 +40,17 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: copyover
           persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
-          fetch-depth: 0 # otherwise, you will failed to push refs to dest repo  
+          fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
   copytomaster:
-    name: copy over to master
-    needs: branding_test
     runs-on: ubuntu-latest
     steps:
-      - name: repo-sync
-        uses: repo-sync/github-sync@v2
-        with:
-          source_repo: ${{ github.repository }}
-          source_branch: "copyover"
-          destination_branch: "master"
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+    - name: repo-sync
+      uses: wei/git-sync@v1
+      env:
+        SOURCE_REPO: ${{ github.repository }}
+        SOURCE_BRANCH: "copyover"
+        DESTINATION_REPO: ${{ github.repository }}
+        DESTINATION_BRANCH: "master"
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        args: $SOURCE_REPO $SOURCE_BRANCH $DESTINATION_REPO $DESTINATION_BRANCH
