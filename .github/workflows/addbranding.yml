@@ -30,8 +30,8 @@ jobs:
           replace: "UniversalPay Gateway"
       - name: add to github
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          git config --local user.email "jurgencalleja@github.com"
+          git config --local user.name "Jurgen Calleja"
           git add .
           git commit -m "testing testing 123"
       - name: Push changes
