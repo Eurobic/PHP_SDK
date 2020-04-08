@@ -52,8 +52,12 @@ jobs:
           ref: "copyover"
       - name: checkout copyover to master
         run: |
-          git pull
-          git push origin copyover:master
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git checkout master
+          git pull               # to update the state to the latest remote master state
+          git merge copyover     # to bring changes to local master from your develop branch
+          git push origin master # push current HEAD to remote master branch          
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
