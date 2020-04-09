@@ -45,6 +45,8 @@ jobs:
       - name: Merge changes to Master 
         run: |
           git pull origin master --allow-unrelated-histories
+          git fetch origin
+          git reset --hard origin
           git checkout master
           git merge copyover
           git add .
@@ -95,6 +97,8 @@ jobs:
       - name: Merge changes to Master 
         run: |
           git pull origin master --allow-unrelated-histories
+          git fetch origin
+          git reset --hard origin
           git checkout master
           git merge copyover
           git add .
