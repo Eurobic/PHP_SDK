@@ -16,21 +16,34 @@ jobs:
         with:
           repository: ${{ github.repository }}
           ref: "copyover"
-      - name: checkout to master
-        run: |
-          git checkout master
       - name: Find and Replace EVO WITH UP
+        if: ${{ github.repository }} == 'intelligentpayments/PHP_SDK_UP'
         uses: jacobtomlinson/gha-find-replace@0.1.1
         with:
           include: "README.md"
           find: "EVO"
           replace: "UniversalPay"
       - name: Find and Replace Evo Gateway WITH UniversalPay Gateway
+        if: ${{ github.repository }} == 'intelligentpayments/PHP_SDK_UP'
         uses: jacobtomlinson/gha-find-replace@0.1.1
         with:
           include: "README.md"
           find: "Evo Gateway"
           replace: "UniversalPay Gateway"
+     - name: Find and Replace EVO WITH BOIPA
+        if: ${{ github.repository }} == 'intelligentpayments/BOIPA'
+        uses: jacobtomlinson/gha-find-replace@0.1.1
+        with:
+          include: "README.md"
+          find: "EVO"
+          replace: "BOIPA"
+      - name: Find and Replace Evo Gateway WITH BOIPA Gateway
+        if: ${{ github.repository }} == 'intelligentpayments/BOIPA'
+        uses: jacobtomlinson/gha-find-replace@0.1.1
+        with:
+          include: "README.md"
+          find: "Evo Gateway"
+          replace: "BOIPA Gateway"
       - name: add to github
         run: |
           git config --local user.email "action@github.com"
