@@ -10,7 +10,7 @@ jobs:
   branding_test_UP:
     name: brand repo
     runs-on: ubuntu-latest
-    if: ${{ github.repository }} == 'intelligentpayments/PHP_SDK_UP'
+    if: github.repository == 'intelligentpayments/PHP_SDK_UP'
     steps:
       - name: get github repo
         uses: actions/checkout@v2
@@ -45,7 +45,7 @@ jobs:
   branding_test_BOIPA:
     name: brand repo
     runs-on: ubuntu-latest
-    if: ${{ github.repository }} == 'intelligentpayments/PHP_SDK_BOIPA'
+    if: github.repository == 'intelligentpayments/PHP_SDK_BOIPA'
     steps:
       - name: get github repo
         uses: actions/checkout@v2
