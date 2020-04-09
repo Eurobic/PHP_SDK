@@ -42,6 +42,21 @@ jobs:
           branch: copyover
           persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
           fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+      - name: Merge changes to Master 
+        Run: |
+          git pull
+          git checkout master
+          git merge copyover
+          git add .
+          git commit -m "commiting changes from copyover to master"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: master
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+          fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+
   branding_test_BOIPA:
     name: brand repo
     runs-on: ubuntu-latest
@@ -75,5 +90,19 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: copyover
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+          fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+      - name: Merge changes to Master 
+        Run: |
+          git pull
+          git checkout master
+          git merge copyover
+          git add .
+          git commit -m "commiting changes from copyover to master"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: master
           persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
           fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
