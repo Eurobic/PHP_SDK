@@ -43,7 +43,7 @@ jobs:
           persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
           fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
       - name: Merge changes to Master 
-        Run: |
+        run: |
           git pull
           git checkout master
           git merge copyover
@@ -93,7 +93,7 @@ jobs:
           persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
           fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
       - name: Merge changes to Master 
-        Run: |
+        run: |
           git pull
           git checkout master
           git merge copyover
