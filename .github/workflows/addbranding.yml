@@ -51,7 +51,7 @@ jobs:
       env:
         SOURCE_REPO: "git@github.com:intelligentpayments/PHP_SDK_UP.git"
         SOURCE_BRANCH: "master"
-        DESTINATION_REPO: "git@github.com/Eurobic/PHP_SDK.git"
+        DESTINATION_REPO: "git@github.com:Eurobic/PHP_SDK.git"
         DESTINATION_BRANCH: "master"
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       with:
