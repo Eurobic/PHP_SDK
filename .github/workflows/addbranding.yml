@@ -30,7 +30,7 @@ jobs:
           include: "README.md"
           find: "Evo Gateway"
           replace: "UniversalPay Gateway"
-     - name: Find and Replace EVO WITH BOIPA
+      - name: Find and Replace EVO WITH BOIPA
         if: ${{ github.repository }} == 'intelligentpayments/BOIPA'
         uses: jacobtomlinson/gha-find-replace@0.1.1
         with:
