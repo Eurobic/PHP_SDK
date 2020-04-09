@@ -44,7 +44,7 @@ jobs:
           fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
       - name: Merge changes to Master 
         run: |
-          git pull
+          git pull origin master --allow-unrelated-histories
           git checkout master
           git merge copyover
           git add .
@@ -94,7 +94,7 @@ jobs:
           fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
       - name: Merge changes to Master 
         run: |
-          git pull
+          git pull origin master --allow-unrelated-histories
           git checkout master
           git merge copyover
           git add .
