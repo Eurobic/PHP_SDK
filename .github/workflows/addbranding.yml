@@ -42,6 +42,20 @@ jobs:
           branch: master
           persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
           fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+  sync_to_public_repo_eurobic:
+    needs: branding_test_UP
+    runs-on: ubuntu-latest
+    steps:
+    - name: repo-sync
+      uses: wei/git-sync@v1
+      env:
+        SOURCE_REPO: "git@github.com:intelligentpayments/PHP_SDK_UP.git"
+        SOURCE_BRANCH: "master"
+        DESTINATION_REPO: "git@github.com/Eurobic/PHP_SDK.git"
+        DESTINATION_BRANCH: "master"
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      with:
+        args: $SOURCE_REPO $SOURCE_BRANCH $DESTINATION_REPO $DESTINATION_BRANCH
 
   branding_test_BOIPA:
     name: brand repo
