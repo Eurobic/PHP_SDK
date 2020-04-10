@@ -29,12 +29,10 @@ jobs:
           include: "README.md"
           find: "Evo Gateway"
           replace: "UniversalPay Gateway"
-      - name: add to github
+      - name: Add to GitHub
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          rm -f .github/workflows/synctobrandrepos.yml
-          rm -f .github/workflows/addbranding.yml
           git add .
           git commit -m "testing testing 123"
       - name: Push changes
